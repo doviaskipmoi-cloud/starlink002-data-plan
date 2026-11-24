@@ -216,7 +216,7 @@
         }
 
         .modal-box {
-            width: 400px;
+            width: 440px;
             max-width: 95%;
             background: #111d2b;
             border-radius: 14px;
@@ -296,7 +296,6 @@
         }
 
         .ecocash-highlight {
-            color: #0066ff;
             font-weight: 900;
             font-size: 17px;
             text-shadow:
@@ -307,6 +306,14 @@
             border: 1px solid #ff0000;
             border-radius: 5px;
             padding: 3px 7px;
+        }
+
+        .eco-part {
+            color: #0066ff;
+        }
+
+        .cash-part {
+            color: #ff0000;
         }
 
         .no-payment-highlight {
@@ -325,31 +332,35 @@
 
         .modal-buttons {
             display: flex;
+            flex-wrap: wrap;
             gap: 12px;
             padding: 0 20px 20px;
         }
 
         .cancel-btn {
-            flex: 1;
-            height: 44px;
+            flex: 0 0 110px;
+            min-height: 52px;
+            padding: 10px 14px;
             border: none;
             border-radius: 8px;
             background: #4a5568;
             color: #fff;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
         }
 
         .start-btn {
-            flex: 1;
-            height: 44px;
+            flex: 1 1 200px;
+            min-height: 52px;
+            padding: 12px 18px;
             border: none;
             border-radius: 8px;
             background: #fff;
             color: #111;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
+            line-height: 1.25;
             cursor: pointer;
         }
 
@@ -491,7 +502,7 @@
                     Enjoy your free 2-day trial!
                     <span class="no-payment-highlight">No payment needed.</span>
                     Click Start Free Trial and confirm your number through
-                    <span class="ecocash-highlight">EcoCash</span>
+                    <span class="ecocash-highlight"><span class="eco-part">Eco</span><span class="cash-part">Cash</span></span>
                     to get started.
                 </p>
             </div>

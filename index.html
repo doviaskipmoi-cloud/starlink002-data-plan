@@ -331,53 +331,48 @@
             padding: 3px 7px;
         }
 
-        /* ===== PAID PLAN CONFIRMATION MODAL ===== */
-        .plan-summary-card {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.14);
+        /* ===== ENTICING PAID PLAN MODAL ===== */
+        .paid-offer-card {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.18), rgba(57, 255, 20, 0.08));
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 12px;
             padding: 16px;
-            margin: 16px 0;
+            margin: 14px 0 18px;
         }
 
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            font-size: 14px;
-        }
-
-        .summary-row:last-child {
-            border-bottom: none;
-        }
-
-        .summary-label {
-            color: #b8c4d4;
-            font-weight: 500;
-        }
-
-        .summary-value {
-            color: #fff;
-            font-weight: 700;
-            text-align: right;
-        }
-
-        .summary-price {
-            color: #4ade80;
-            font-size: 17px;
+        .paid-plan-headline {
+            font-size: 20px;
             font-weight: 800;
+            color: #fff;
+            margin-bottom: 6px;
         }
 
-        .ecocash-redirect-banner {
-            background: rgba(0, 102, 255, 0.14);
-            border: 1px solid rgba(57, 255, 20, 0.35);
-            border-radius: 10px;
-            padding: 14px;
+        .paid-plan-sub {
             font-size: 14px;
-            line-height: 1.65;
-            color: #e6edf7;
+            color: #dbeafe;
+            margin-bottom: 12px;
+        }
+
+        .paid-price-tag {
+            display: inline-block;
+            background: #22c55e;
+            color: #071b0e;
+            font-weight: 800;
+            font-size: 16px;
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
+
+        .paid-perks {
+            list-style: none !important;
+            padding-left: 0 !important;
+            margin: 12px 0 16px !important;
+        }
+
+        .paid-perks li {
+            font-size: 14px;
+            color: #e2e8f0;
+            margin-bottom: 8px !important;
         }
 
         .modal-buttons {
@@ -533,10 +528,48 @@
                     🎁
                     <span>5GB Data — 2 Day EcoCash free Plan</span>
                 </div>
-                <button class="close-modal" id="closeTrialModal">×</button>
+                <button class="close-modal">×</button>
             </div>
 
             <div class="modal-body">
                 <p class="intro">
                     This free trial lets you experience our service firsthand and confirm its legitimacy before upgrading.
-                </
+                </p>
+
+                <p><strong>Price:</strong> Free trial</p>
+                <p><strong>Validity:</strong> 2 days</p>
+
+                <ul>
+                    <li>5GB total Starlink to Cell data bundle</li>
+                    <li>Valid for 2 days from activation</li>
+                    <li>Free trial for new users</li>
+                </ul>
+
+                <p class="trial-message">
+                    Enjoy your free 2-day trial!
+                    <span class="no-payment-highlight">No payment needed.</span>
+                    Click Start Free Trial and confirm your number through
+                    <span class="ecocash-highlight"><span class="eco-part">Eco</span><span class="cash-part">Cash</span></span>
+                    to get started.
+                </p>
+            </div>
+
+            <div class="modal-buttons">
+                <button class="cancel-btn">Cancel</button>
+                <button class="start-btn">Start Free Trial EcoCash</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAID PLAN ECOCASH MODAL (for all non-free-trial plans) -->
+    <div id="ecoCashModal" class="modal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-title">
+                    ⚡
+                    <span>Pay with EcoCash</span>
+                </div>
+                <button class="close-modal" id="closeEcoCashModal">×</button>
+            </div>
+
+            <div class="modal-

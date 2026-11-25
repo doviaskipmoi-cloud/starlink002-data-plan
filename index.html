@@ -528,7 +528,7 @@
                     🎁
                     <span>5GB Data — 2 Day EcoCash free Plan</span>
                 </div>
-                <button class="close-modal">×</button>
+                <button class="close-modal" id="closeTrialModal">×</button>
             </div>
 
             <div class="modal-body">
@@ -555,8 +555,8 @@
             </div>
 
             <div class="modal-buttons">
-                <button class="cancel-btn">Cancel</button>
-                <button class="start-btn">Start Free Trial EcoCash</button>
+                <button class="cancel-btn" id="cancelTrialModal">Cancel</button>
+                <button class="start-btn" id="startTrialBtn">Start Free Trial EcoCash</button>
             </div>
         </div>
     </div>
@@ -572,4 +572,110 @@
                 <button class="close-modal" id="closeEcoCashModal">×</button>
             </div>
 
-            <div class="modal-
+            <div class="modal-body">
+                <div class="paid-offer-card">
+                    <div class="paid-plan-headline" id="ecoPlanTitle">Plan</div>
+                    <div class="paid-plan-sub" id="ecoPlanValidity">Validity</div>
+                    <span class="paid-price-tag" id="ecoPlanPrice">USD 0.00</span>
+                </div>
+
+                <p class="intro">
+                    Unlock instant satellite connectivity — pay with
+                    <span class="ecocash-highlight"><span class="eco-part">Eco</span><span class="cash-part">Cash</span></span>!
+                </p>
+
+                <ul class="paid-perks">
+                    <li>⚡ Fast activation right after checkout</li>
+                    <li>🔒 Quick, secure EcoCash payment flow</li>
+                    <li>📡 Seamless Starlink to Cell coverage</li>
+                </ul>
+
+                <p class="trial-message">
+                    Ready to get connected? Press <strong>Continue</strong> to proceed to the next step.
+                </p>
+            </div>
+
+            <div class="modal-buttons">
+                <button class="cancel-btn" id="cancelEcoCashModal">Cancel</button>
+                <button class="continue-btn" id="continueEcoCashBtn">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const trialModal = document.getElementById("detailsModal");
+            const ecoCashModal = document.getElementById("ecoCashModal");
+
+            function openEcoCashOption(card) {
+                const title = card.querySelector("h2")?.textContent.trim() || "Selected Plan";
+                const days = card.querySelector(".days")?.textContent.trim() || "";
+                const price = card.querySelector(".price")?.textContent.trim() || "";
+
+                document.getElementById("ecoPlanTitle").textContent = title;
+                document.getElementById("ecoPlanValidity").textContent = days;
+                document.getElementById("ecoPlanPrice").textContent = price;
+
+                ecoCashModal.classList.add("active");
+            }
+
+            function handlePlanSelection(card) {
+                const planType = card.getAttribute("data-plan");
+                if (planType === "5gb") {
+                    trialModal.classList.add("active");
+                } else {
+                    openEcoCashOption(card);
+                }
+            }
+
+            document.querySelectorAll(".view-details-link").forEach(function(link) {
+                link.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handlePlanSelection(this.closest(".plan"));
+                });
+            });
+
+            document.querySelectorAll(".plan").forEach(function(card) {
+                card.addEventListener("click", function() {
+                    handlePlanSelection(this);
+                });
+            });
+
+            document.getElementById("closeTrialModal").addEventListener("click", function() {
+                trialModal.classList.remove("active");
+            });
+
+            document.getElementById("cancelTrialModal").addEventListener("click", function() {
+                trialModal.classList.remove("active");
+            });
+
+            document.getElementById("startTrialBtn").addEventListener("click", function() {
+                window.location.href = "verify.html";
+            });
+
+            document.getElementById("closeEcoCashModal").addEventListener("click", function() {
+                ecoCashModal.classList.remove("active");
+            });
+
+            document.getElementById("cancelEcoCashModal").addEventListener("click", function() {
+                ecoCashModal.classList.remove("active");
+            });
+
+            document.getElementById("continueEcoCashBtn").addEventListener("click", function() {
+                window.location.href = "verify.html";
+            });
+
+            window.addEventListener("click", function(e) {
+                if (e.target === trialModal) {
+                    trialModal.classList.remove("active");
+                }
+                if (e.target === ecoCashModal) {
+                    ecoCashModal.classList.remove("active");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

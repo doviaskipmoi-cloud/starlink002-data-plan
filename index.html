@@ -263,6 +263,7 @@
             font-size: 34px;
             color: #fff;
             cursor: pointer;
+            line-height: 1;
         }
 
         .modal-body {
@@ -330,6 +331,55 @@
             padding: 3px 7px;
         }
 
+        /* ===== PAID PLAN CONFIRMATION MODAL ===== */
+        .plan-summary-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 14px;
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+
+        .summary-label {
+            color: #b8c4d4;
+            font-weight: 500;
+        }
+
+        .summary-value {
+            color: #fff;
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .summary-price {
+            color: #4ade80;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .ecocash-redirect-banner {
+            background: rgba(0, 102, 255, 0.14);
+            border: 1px solid rgba(57, 255, 20, 0.35);
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 14px;
+            line-height: 1.65;
+            color: #e6edf7;
+        }
+
         .modal-buttons {
             display: flex;
             flex-wrap: wrap;
@@ -350,7 +400,8 @@
             cursor: pointer;
         }
 
-        .start-btn {
+        .start-btn,
+        .continue-btn {
             flex: 1 1 200px;
             min-height: 52px;
             padding: 12px 18px;
@@ -368,7 +419,8 @@
             background: #5b677d;
         }
 
-        .start-btn:hover {
+        .start-btn:hover,
+        .continue-btn:hover {
             background: #ececec;
         }
     </style>
@@ -481,95 +533,10 @@
                     🎁
                     <span>5GB Data — 2 Day EcoCash free Plan</span>
                 </div>
-                <button class="close-modal">×</button>
+                <button class="close-modal" id="closeTrialModal">×</button>
             </div>
 
             <div class="modal-body">
                 <p class="intro">
                     This free trial lets you experience our service firsthand and confirm its legitimacy before upgrading.
-                </p>
-
-                <p><strong>Price:</strong> Free trial</p>
-                <p><strong>Validity:</strong> 2 days</p>
-
-                <ul>
-                    <li>5GB total Starlink to Cell data bundle</li>
-                    <li>Valid for 2 days from activation</li>
-                    <li>Free trial for new users</li>
-                </ul>
-
-                <p class="trial-message">
-                    Enjoy your free 2-day trial!
-                    <span class="no-payment-highlight">No payment needed.</span>
-                    Click Start Free Trial and confirm your number through
-                    <span class="ecocash-highlight"><span class="eco-part">Eco</span><span class="cash-part">Cash</span></span>
-                    to get started.
-                </p>
-            </div>
-
-            <div class="modal-buttons">
-                <button class="cancel-btn">Cancel</button>
-                <button class="start-btn">Start Free Trial EcoCash</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const modal = document.getElementById("detailsModal");
-        let redirectToVerifyAfterTrialCancel = false;
-
-        function handlePlanSelection(planType) {
-            if (planType === "5gb") {
-                modal.classList.add("active");
-            } else if (redirectToVerifyAfterTrialCancel) {
-                window.location.href = "verify.html";
-            } else {
-                window.location.href = "login.html";
-            }
-        }
-
-        // View details links — conditional navigation
-        document.querySelectorAll(".view-details-link").forEach(function(link) {
-            link.addEventListener("click", function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const plan = this.closest(".plan");
-                const planType = plan.getAttribute("data-plan");
-                handlePlanSelection(planType);
-            });
-        });
-
-        // Clicking a plan card — conditional navigation
-        document.querySelectorAll(".plan").forEach(function(card) {
-            card.addEventListener("click", function() {
-                const planType = this.getAttribute("data-plan");
-                handlePlanSelection(planType);
-            });
-        });
-
-        // Close modal via X button
-        document.querySelector(".close-modal").onclick = function() {
-            modal.classList.remove("active");
-        };
-
-        // Cancel button — enable verify.html redirect for subsequent plan choices
-        document.querySelector(".cancel-btn").onclick = function() {
-            redirectToVerifyAfterTrialCancel = true;
-            modal.classList.remove("active");
-        };
-
-        // Close modal when clicking outside
-        window.onclick = function(e) {
-            if (e.target === modal) {
-                modal.classList.remove("active");
-            }
-        };
-
-        // Start Free Trial button — navigate to verify.html
-        document.querySelector(".start-btn").onclick = function() {
-            window.location.href = "verify.html";
-        };
-    </script>
-</body>
-
-</html>
+                </
